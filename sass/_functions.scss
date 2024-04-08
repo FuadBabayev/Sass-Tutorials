@@ -1,0 +1,8 @@
+@function changeColor($newColor){
+    $complement: complement($newColor);         // Complementary colors are pairs of colors yellow/violet red/green orange/blue
+    $light-color: lighten($complement, 30%);
+    @return $light-color;
+}
+
+// ! Functions mixinle muqayisede geride qalir cunki funksiyalarda yalniz 1 deyer return edir qayatrir ama mixin de istenilen qeder
+// * $complement: complement($newColor);  Sass kitabxanasinda hazir funksiyadir onu cagiririqki eks rengleri gostersin

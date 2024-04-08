@@ -1,0 +1,13 @@
+1. Download Node.js latest version                        (write "node -v" in order to see yout node version)
+2. Write npm init or npm init -y                          (it will create package.json file)
+3. Write npm install gulp gulp-sass sass --save-dev       (download gulp, gulp-sass, sass (node_modules and package-lock.json) and --save-dev means it is installed only your package when you git clone it you must install node_modules again )
+4. Create gulpfile.js                                     (fill it with specific functions const { src, dest, watch, series } = require('gulp');  )
+5. Write gulp                                             (first yo must fill gulpfile.js with functions and it will creat css/index.css file)
+.
+.
+.
+98. Write npm install gulp-purgecss --save-dev            (donwload PurgeCss in order to delete all unnecessary css lines)
+99. Fill the gulpfile.js with appropriate words           (after the completing all process and our website is ready const purgecss = require('gulp-purgecss');)
+
+Eger Sass-da yaratdiqimiz file adi “variable.scss” olsa Sass bunu esas file kimi hesab edib css/variables.css yaradacaq;
+Eger “_variable.scss” olsa Sass bunu elave file kimi hesab edib css/index.css in icine elave edecek.

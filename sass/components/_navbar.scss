@@ -1,0 +1,131 @@
+// ! Extend ve Mixin demek olarki eyni seylerdir kicik ferqleri 
+// ! @mixin deyersiz ve ya deyer qebul ede biler, @extend ise deyersiz olur 
+// ! @mixin heresi ucun ayri ayri classlar yaradir buda css setirlerin coxluquna sebeb olur, @extends ise eyni setirde yazir
+// Todo: @mixin yazilis qaydasi asagidaki kimidir
+// @mixin deyer($reng) {
+//     color: $reng;
+// }
+// h1 {
+//     @include deyer(red);
+// }
+// Todo: @extend yazilis qaydasi asagidaki kimidir
+// .color{
+//     color: red;
+// }
+// h1{
+//     @extend .color;
+// }
+
+
+%flex-layout {                                   // % isaresini qoymaq hemen classi css-da gostermir lazim olanda class icinde olur ozu
+    display: flex;                               // . iserasini qoyanda ise avtomatik olaraq ayrica flex-layout ucun css setirleri yaranirdi
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar {
+    @extend %flex-layout;
+    padding: $base-padding $base-padding * 2;
+    box-shadow: $base-box-shadow;
+
+    .site-title {
+        font-size: $font-size-lg;
+    }
+
+    .container {
+        @extend %flex-layout;
+        width: 100%;
+    }
+}
+// ? Code above will give this codes in css
+// .navbar .container, .navbar {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+// .navbar {
+//     padding: 0.75rem 1.5rem;
+//     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+// }
+// .navbar .site-title {
+//     font-size: 1.5rem;
+// }
+// .navbar .container {
+//     width: 100%;
+// }
+
+
+
+
+
+// ! With @extend
+// .flex-layout {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+// .navbar {
+//     @extend .flex-layout;
+//     padding: $base-padding $base-padding * 2;
+//     box-shadow: $base-box-shadow;
+//     .site-title {
+//         font-size: $font-size-lg;
+//     }
+//     .container {
+//         @extend .flex-layout;
+//         width: 100%;
+//     }
+// }
+// ? Code above will give this codes in css
+// .flex-layout, .navbar .container, .navbar {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+// .navbar {
+//     padding: 0.75rem 1.5rem;
+//     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+// }
+// .navbar .site-title {
+//     font-size: 1.5rem;
+// }
+// .navbar .container {
+//     width: 100%;
+// }
+
+
+
+
+
+
+// ! With @mixin
+// @mixin flex-layout {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+// .navbar {
+//     @include flex-layout;
+//     padding: $base-padding $base-padding * 2;
+//     box-shadow: $base-box-shadow;
+//     .site-title {
+//         font-size: $font-size-lg;
+//     }
+// }
+// ? Code above will give this codes in css
+// .navbar {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 0.75rem 1.5rem;
+//     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+// }
+// .navbar .site-title {
+//     font-size: 1.5rem;
+// }
+
+@each $key, $value in $colors{
+    .navbar-#{$key}{
+        @extend .navbar;
+        background-color: $value;
+    }
+}

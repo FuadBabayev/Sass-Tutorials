@@ -1,0 +1,71 @@
+// // @mixin without parameters and arguments
+// @mixin button{
+//     text-decoration: none;
+//     cursor: pointer;
+//     display: inline-block;
+//     border: 0;
+//     padding: $base-padding $base-padding * 2;
+//     border-radius: $base-border-radius;
+// }
+// @each $key, $values in $colors{
+//     .btn-#{$key}{
+//         @include button;
+//         background-color: $values;
+//     }
+//     .btn-outlined-#{$key}{
+//         @include button;
+//         background-color: $snow;
+//         border: $base-border-thickness solid $values;
+//     }
+// }
+
+
+
+// @mixin with parameters and arguments
+@mixin button($bg-color, $border, $color){
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    border: 0;
+    padding: $base-padding $base-padding * 2;
+    border-radius: $base-border-radius;
+    background-color: $bg-color;
+    border: $border;
+    color: $color;
+}
+@each $key, $values in $colors{
+    .btn-#{$key}{
+        @include button($values, 0, $snow);
+        &:hover{
+            background-color: darken($values, 20%);  // or
+            // background-color: mix(black, $values, 20%);
+        }
+    }
+    .btn-outlined-#{$key}{
+        @include button($snow, $base-border-thickness solid $values, $values);
+        &:hover{
+            background-color: $values; 
+            color: $snow;
+        }
+    }
+    .btn-complement-#{$key}{
+        @include button($values, $base-border-thickness solid $values, $snow);
+        &:hover{
+            background-color: changeColor($values);
+            color: $values;
+        }
+    }
+    // @debug "<button class=\"btn-#{$key}\">Click Me</button>";
+    // @debug "<button class=\"btn-outlined-#{$key}\">Click Me</button>";
+    // @debug "<button class=\"btn-compliment-#{$key}\">Click Me</button>";
+}
+
+@mixin button($bg-color: white){
+    background-color: $bg-color;
+}
+.button-default{
+    @include button;                // if there is no any parametr this mixin take white as a default argument
+}   
+.button-colored{
+    @include button(black);       // there is a parametr and mixin take black as a default argument  
+}

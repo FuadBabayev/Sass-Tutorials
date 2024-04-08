@@ -1,0 +1,69 @@
+@each $key, $values in $colors {
+
+    // bg-primary, by-secondary ....
+    .bg-#{$key} {
+        background-color: $values;
+    }
+
+    .bg-hover-#{$key} {
+        background-color: $values;
+
+        &:hover {
+            background-color: mix(black, $values, 20%); // or
+            // background-color: darken($values, 20%);
+        }
+    }
+
+    // text-primary, text-secondary ....
+    .text-#{$key} {
+        color: $values;
+    }
+
+    .text-hover-#{$key} {
+        color: $values;
+
+        &:hover {
+            color: mix(white, $values, 70%); // or
+            // color: lighten($values, 40%);
+        }
+    }
+
+    // @debug "<span class=\"bg-#{$key}\">#{$key} background</span>";
+    // @debug "<span class=\"text-#{$key}\">#{$key} text</span>";
+
+    @if($values !=white and $values !=black) {
+
+        // Light Variations of Colors
+        @for $i from 1 through 9 {
+
+            // bg-primary-light-1 ..... bg-primary-light-9
+            .bg-#{$key}-light-#{$i} {
+                background-color: mix(white, $values, $i * 10%);
+            }
+
+            // text-primary-light-1 ..... text-primary-light-9
+            .text-#{$key}-light-#{$i} {
+                color: mix(white, $values, $i * 10%);
+            }
+
+            // @debug "<span class=\"bg-#{$key}-light-#{$i}\">Background: #{$key}-light-#{$i}</span>";
+        }
+
+
+        // Dark Variations of Colors
+        @for $i from 1 through 9 {
+
+            // bg-primary-dark-1 ..... bg-primary-dark-9
+            .bg-#{$key}-dark-#{$i} {
+                background-color: mix(black, $values, $i * 10%);
+            }
+
+            // text-primary-dark-1 ..... text-primary-dark-9
+            .text-#{$key}-dark-#{$i} {
+                color: mix(black, $values, $i * 10%);
+            }
+
+            // @debug "<span class=\"bg-#{$key}-dark-#{$i}\">Background: #{$key}-dark-#{$i}</span>";
+        }
+    }
+}

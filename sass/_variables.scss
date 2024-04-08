@@ -1,0 +1,50 @@
+// Theme colors
+$primary: #326dee;
+$secondary: #1ac888;
+$error: #d32752;
+$info: #f6c31c;
+$snow: #ffffff;
+
+// Color Palette
+$colors : (
+    "primary" : $primary,
+    "secondary" : $secondary,
+    "error" : $error,
+    "info" : $info,
+    "blue" : #1919e6,
+    "red" : #e61919,
+    "yellow" : #e6e619,
+    "green" : #19e635,
+    "orange" : #ffa600,
+    "purple" : #9900ff,
+    "gray" : #808080,
+    "black" : black,
+    "white" : white
+);
+// @debug map-keys($map: $colors);                         // "primary", "secondary", "error", "info", "blue", "red", "yellow", "green", "orange", "purple", "gray", "black", "white" 
+// @debug map-values($map: $colors);                       // #326dee, #1ac888, #d32752, #f6c31c,  #1919e6, #e61919, #e6e619, #19e635, #ffa600, #9900ff, #808080, black, white 
+// @debug map-get($map: $colors, $key: "orange");          // #ffa600 or shorthand
+// @debug map-get($colors, "green");                       // #19e635
+// @debug map-has-key($map: $colors, $key: "secondary");   // true or shorthand
+// @debug map-has-key($colors, "tertiary");                // false
+// @debug map-remove($map: $colors, $key: "secondary");    // remove color : ("primary" : $primary,) 
+// @debug map-merge($colors, ("pink": #da2c94));           // join another map or color
+
+// Spacing
+$base-padding: 0.75rem;
+$base-margin: 0.75rem;
+
+// Borders
+$base-border-thickness: 1px;
+$base-border-radius: 20px;
+
+// Box-shadow
+$base-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+
+// Font-size
+$base-font-size: 1rem;
+$font-size-sm: $base-font-size * 0.75;
+$font-size-md: $base-font-size * 1.2;
+$font-size-lg: $base-font-size * 1.5;
+$font-size-xl: $base-font-size * 2;
+$font-size-xxl: $base-font-size * 3;
