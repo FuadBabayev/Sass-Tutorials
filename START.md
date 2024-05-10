@@ -33,7 +33,7 @@ exports.default = series(buildStyles, watchTask);
 
 # Setup Purge CSS
 1. Install purgecss, run this command (terminal, cmd): `npm install  gulp-purgecss --save-dev`
-2. Minimalize css file run this command (terminal, cmd): `npm i gulp-cssnano --save-dev`
+2. Minimalize css file run this command (terminal, cmd): `npm i gulp-cssnano --save-dev` 
 
 > [!IMPORTANT]
 > Saytda olan butun deyisiklikler bitdikden, purgecss ve css minimalize sonra `gulpfile.js`-in son hali bele olmalidir
